@@ -1,13 +1,15 @@
 {
-   "name": "e-Commerce",
+   "name": "maya_money",
    "version": "0.0.1",
    "description": "Awesome project developed with TypeORM.",
    "devDependencies": {
-      "ts-node": "3.3.0",
       "@types/node": "^8.0.29",
-      "typescript": "3.3.3333"
+      "nodemon": "^2.0.20",
+      "ts-node": "^10.9.1",
+      "typescript": "^3.3.3333"
    },
    "dependencies": {
+      "@directus/sdk": "^10.1.4",
       "@types/bcryptjs": "^2.4.2",
       "@types/body-parser": "^1.19.0",
       "@types/cors": "^2.8.10",
@@ -20,12 +22,13 @@
       "helmet": "^4.6.0",
       "jsonwebtoken": "^8.5.1",
       "morgan": "^1.10.0",
-      "mysql": "^2.14.1",
+      "mysql": "^2.14.1", 
       "reflect-metadata": "^0.1.10",
       "ts-node-dev": "^1.1.6",
       "typeorm": "0.2.32"
    },
    "scripts": {
-      "start": "ts-node src/index.ts"
+      "start": "ts-node src/index.ts",
+      "dev": "nodemon index.ts"
    }
 }

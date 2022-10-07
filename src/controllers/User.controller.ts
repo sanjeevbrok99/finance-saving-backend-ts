@@ -1,24 +1,24 @@
-import { validate } from 'class-validator';
-import { User } from '../entity/User';
-import { getRepository } from 'typeorm';
-import {Request, Response } from 'express';
-const bcrypt = require('bcryptjs'); //use to hash passwords
+import { validate } from 'class-validator'; 
+import { User } from '../entity/User';  
+import { getRepository } from 'typeorm'; 
+import {Request, Response } from 'express'; 
+const bcrypt = require('bcryptjs'); //use to hash passwords 
 
 
-export const getUsers = async(req:Request, res:Response):Promise<Response>=>{
+export const getUsers = async(req:Request, res:Response):Promise<Response>=>{ 
     const users=await getRepository(User).find();
-    return res.status(200).send(users);
+    return res.status(200).send(users); 
+}; 
+ 
+ 
+export const getUserById = async(req:Request, res:Response):Promise<Response>=>{ 
+    const userById=await getRepository(User).findOne(req.body.id); 
+    return res.status(200).send(userById); 
 };
-
-
-export const getUserById = async(req:Request, res:Response):Promise<Response>=>{
-    const userById=await getRepository(User).findOne(req.body.id);
-    return res.status(200).send(userById);
-};
-
-
-
-export const createUser = async (req: Request, res: Response):Promise<Response> => {
+ 
+ 
+ 
+export const createUser = async (req: Request, res: Response):Promise<Response> => { 
     const { username, password,address,firstName,phoneNumber, lastName, email } = req.body;
     const user = new User();
     user.username = username;
@@ -41,7 +41,10 @@ export const createUser = async (req: Request, res: Response):Promise<Response> 
       res.status(409).send('Sorry, this username already exists 😿');
       return;
     }
-    res.status(201).send('User created');
+    res.status(201).json({
+      success: true,
+      data: user,
+    });;
   };
   
   export const updateUser = async (req: Request, res: Response) => {
@@ -60,31 +63,31 @@ export const createUser = async (req: Request, res: Response):Promise<Response> 
     return;
   }
   //Validate the new values on model
-  user.username = username;
-  user.password = password;
-  user.address=address;
+  user.username = username;  
+  user.password = password; 
+  user.address=address; 
   user.firstName=firstName;
-  user.lastName=lastName;
-  user.phoneNumber=phoneNumber
-  user.email=email
-  const errors = await validate(user);
+  user.lastName=lastName; 
+  user.phoneNumber=phoneNumber 
+  user.email=email 
+  const errors = await validate(user); 
   user.hashPassword();
-  if (errors.length > 0) {
-    res.status(400).send(errors);
-    return;
-  }
-  //Try to safe, if fails, that means username already in use
+  if (errors.length > 0) { 
+    res.status(400).send(errors); 
+    return; 
+  } 
+  //Try to safe, if fails, that means username already in use  
   try {
-    await userRepository.save(user);
-  } catch (e) {
-    res.status(409).send("username already in use");
-    return;
-  }
+    await userRepository.save(user); 
+  } catch (e) { 
+    res.status(409).send("username already in use"); 
+    return; 
+  } 
   //After all send a 204 (no content, but accepted) response
-  res.status(204).send();
-  };
-// Delete User by Id
-  export const deleteUser = async (req: Request, res: Response): Promise<Response> => {
-    const results = await getRepository(User).delete(req.params.id);
-    return res.status(200).send(results);
-  };
+  res.status(204).send();  
+  }; 
+// Delete User by Id 
+  export const deleteUser = async (req: Request, res: Response): Promise<Response> => { 
+    const results = await getRepository(User).delete(req.params.id); 
+    return res.status(200).send(results); 
+  }; 

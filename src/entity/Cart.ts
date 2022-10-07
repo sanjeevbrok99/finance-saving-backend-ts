@@ -2,9 +2,6 @@ import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGenerat
 import { Product } from "./Product";
 import { User } from "./User";
 
-
-
-
 @Entity( "tbl_cart")
 export class Cart{
     

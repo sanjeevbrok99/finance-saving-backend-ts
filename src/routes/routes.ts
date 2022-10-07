@@ -11,7 +11,7 @@ routes.get('/', (req, res) =>
   ),
 )
 routes.use("/auth", auth);
-routes.use("/user", user);
+routes.use("/items", user);
 routes.use("/category", category);
 routes.use("/product", product);
 routes.use("/cart", cart);

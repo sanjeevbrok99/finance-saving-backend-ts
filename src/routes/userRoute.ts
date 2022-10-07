@@ -11,10 +11,10 @@ import {
   
 
 } from "../controllers/User.controller";
-router.get("/users", getUsers);
-router.get("/users/:id", getUserById);
-router.post("/users", createUser);
-router.put("/users/:id", updateUser, verifyToken);
-router.delete("/users/:id", deleteUser, verifyToken);
+router.get("/user", getUsers);
+router.get("/user/:id", getUserById);
+router.post("/user", createUser);
+router.put("/user/:id", updateUser, verifyToken);
+router.delete("/user/:id", deleteUser, verifyToken);
 
 export default router;
