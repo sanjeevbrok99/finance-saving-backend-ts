@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken'); 
+const jwt = require('jsonwebtoken');  
 const secret = require('../config/clientSecret').secret; 
  
 const verifyToken = (req, res, next) => { 
