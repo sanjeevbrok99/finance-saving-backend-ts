@@ -1,6 +1,6 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Product } from "./Product";
-import { User } from "./User";
+//import { User } from "./user";
 
 @Entity( "tbl_cart")
 export class Cart{
@@ -24,11 +24,11 @@ export class Cart{
     @JoinColumn({name:"productId"})
     product:Product;
 
-    @Column()
-    userId:number
-    @ManyToOne (()=>User, user => user.cart,{eager:true})
-    @JoinColumn({name:"userId"})
-    user:User; 
+    // @Column()
+    // userId:number
+    // @ManyToOne (()=>User, user => user.cart,{eager:true})
+    // @JoinColumn({name:"userId"})
+    // user:User; 
     
     @Column()
     @CreateDateColumn()

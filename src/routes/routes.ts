@@ -10,10 +10,10 @@ routes.get('/', (req, res) =>
     'This is a basic Authentication using TypeScript, Node.js, TypeORM and Mysql',
   ),
 )
-routes.use("/auth", auth);
-routes.use("/items", user);
-routes.use("/category", category);
-routes.use("/product", product);
-routes.use("/cart", cart);
-
-export default routes;
+routes.use("/auth", auth); 
+routes.use("/user", user);
+routes.use("/category", category); 
+routes.use("/product", product); 
+routes.use("/cart", cart); 
+ 
+export default routes; 

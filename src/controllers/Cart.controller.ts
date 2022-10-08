@@ -2,7 +2,7 @@ import { Product } from './../entity/Product';
 import { getRepository } from 'typeorm';
 import { Cart } from './../entity/Cart';
 import { Response, Request } from 'express';
-import { User } from '../entity/User';
+import { User } from '../entity/user';
 
 
 export const getAllCarts = async (req: Request, res: Response): Promise<Response> => {
@@ -31,7 +31,7 @@ export const createNewCart = async (req: Request, res: Response): Promise<Respon
         newCart.totalCost = totalCost
         newCart.product = product
         newCart.price = product.price
-        newCart.user = userId
+        //newCart.user = userId
         const data = await getRepository(Cart).save(newCart);
         return res.json({ Success: true, message: "A NEW ITEM HAS BEEN ADDED", data });
     } else {
@@ -55,7 +55,7 @@ export const updateCart = async (req: Request, res: Response): Promise<Response>
             cart.totalCost = totalCost
             cart.product = product
             cart.price = product.price
-            cart.user = userId
+            //cart.user = userId
             const data = await getRepository(Cart).save(cart);
         return res.json({ Success: true, message: "Your Cart has been Updated!", data });
 

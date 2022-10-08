@@ -2,17 +2,17 @@ import { getRepository } from 'typeorm';
 import { Request,Response } from 'express';
 import { Product } from './../entity/Product';
 
-export const getAllProducts=async (req:Request, res:Response):Promise<Response>=>{
-    const products = await getRepository(Product).find();
-    return res.status(200).send(products);
+export const getAllProducts=async (req:Request, res:Response):Promise<Response>=>{ 
+    const products = await getRepository(Product).find(); 
+    return res.status(200).send(products); 
 }
 
-export const getProductById=async(req:Request, res:Response):Promise<Response>=>{
-    const productById=await getRepository(Product).findOne(req.body.id);
-    return res.status(200).send(productById); 
-}
-
-export const createNewProduct=async(req:Request, res:Response):Promise<Response>=>{
+export const getProductById=async(req:Request, res:Response):Promise<Response>=>{ 
+    const productById=await getRepository(Product).findOne(req.body.id); 
+    return res.status(200).send(productById);  
+} 
+ 
+export const createNewProduct=async(req:Request, res:Response):Promise<Response>=>{ 
 
     const newProduct =await getRepository(Product).create(req.body);
     const results=await getRepository(Product).save(newProduct);

@@ -24,8 +24,8 @@ createConnection()
     //Set all routes from routes folder
     app.use("/", routes); 
  
-    app.listen(8055, () => { 
-      console.log("Server started on port", 8055);
+    app.listen(8000, () => { 
+      console.log("Server started on port",8000);
     });
   })
   .catch(error => console.log(error));
