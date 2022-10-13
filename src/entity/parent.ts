@@ -11,11 +11,11 @@ import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert, CreateDateColumn,
       userId:number
 
       @Column({ nullable: true })
-      firstName: string | null;
+      firstName: string ;
     
      
       @Column({ nullable: true })
-      lastName: string | null;
+      lastName: string;
 
       @Column()
       dob: Date;

@@ -1,4 +1,4 @@
-import { User } from '../entity/user'; 
+import { directus_user } from '../entity/directus_users'; 
 import { getRepository } from 'typeorm'; 
 import {Request, Response } from 'express'; 
 import { validate } from 'class-validator'; 
@@ -11,7 +11,7 @@ export const signIn = async (
     res: Response 
  
 ): Promise<Response> => { 
-    const searchedUser = await getRepository(User).findOne({ 
+    const searchedUser = await getRepository(directus_user).findOne({ 
         where: [ 
             { username: req.body.username }, 
             { email: req.body.username } 
@@ -45,8 +45,8 @@ export const changePassword = async (req: Request, res: Response):Promise<Respon
     } 
    
     //Get user from the database 
-    const userRepository = getRepository(User); 
-    let user: User; 
+    const userRepository = getRepository(directus_user); 
+    let user: directus_user; 
     try { 
       user = await userRepository.findOneOrFail(id); 
     } catch (id) {  

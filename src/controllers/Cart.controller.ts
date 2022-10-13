@@ -2,7 +2,7 @@
  import { getRepository } from 'typeorm';
  import { Cart } from './../entity/Cart';
  import { Response, Request } from 'express';
- import { User } from '../entity/user';
+ import { directus_user } from '../entity/directus_users';
  
  
 export  const getAllCarts = async (req: Request, res: Response): Promise<Response> => {
@@ -21,7 +21,7 @@ export  const getAllCarts = async (req: Request, res: Response): Promise<Respons
  
 export const createNewCart =  async (req: Request, res: Response): Promise<Response> => {
     var qty = req.body.quanlity 
-    const userId = await  getRepository(User).findOne(req.body.userId);
+    const userId = await  getRepository(directus_user).findOne(req.body.userId);
     const product = await  getRepository(Product).findOne(req.body.product);
     if (product && userId) { 
         var price = product.price 
@@ -46,7 +46,7 @@ export const updateCart = async (req: Request, res: Response): Promise<Response>
     var qty = req.body.quanlity
     const cart = await getRepository(Cart).findOne(req.params.id);
     if (cart) {
-        const userId = await getRepository(User).findOne(req.body.userId);
+        const userId = await getRepository(directus_user).findOne(req.body.userId);
         const product = await getRepository(Product).findOne(req.body.product);
         if (userId && product) {
             var price = product.price

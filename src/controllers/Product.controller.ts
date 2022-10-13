@@ -23,7 +23,7 @@ export const createNewProduct=async(req:Request, res:Response):Promise<Response>
         return res.json({Success:false, message:"there was a problem creating Product"})
     }
 }
-
+ 
 export const updateProduct=async(req:Request, res:Response):Promise<Response>=>{
     const product =await getRepository(Product).findOne(req.params.id);
     if (product) {

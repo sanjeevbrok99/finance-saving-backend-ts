@@ -1,8 +1,8 @@
 import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, Unique, OneToMany} from "typeorm";
 import * as bcrypt from "bcryptjs";
-@Entity( "user") 
+@Entity( "directus_user") 
 @Unique(['username'])
-export class User {
+export class directus_user {
 
     @PrimaryGeneratedColumn({ type: "int", name: "id" }) 
     id: number; 
@@ -15,7 +15,7 @@ export class User {
 
     @Column("varchar", {name:"phoneNumber", length:11}) 
     phoneNumber: number; 
- 
+  
     @Column("varchar", { name: "username" }) 
     username:string; 
 

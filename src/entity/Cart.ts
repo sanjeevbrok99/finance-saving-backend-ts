@@ -1,7 +1,6 @@
 import { Column, CreateDateColumn,  Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Product } from "./Product"; 
 //import { User } from "./user";
- 
 @Entity( "tbl_cart") 
 export class Cart{ 
      

@@ -1,18 +1,19 @@
 import { validate } from 'class-validator'; 
-import { User } from '../entity/user';  
+import { directus_user } from '../entity/directus_users';  
 import { getRepository } from 'typeorm'; 
 import {Request, Response } from 'express'; 
 const bcrypt = require('bcryptjs'); //use to hash passwords  
  
  
 export const getUsers = async(req:Request, res:Response):Promise<Response>=>{  
-    const users=await getRepository(User).find(); 
+    const users=await getRepository(directus_user).find(); 
+    
     return res.status(200).send(users); 
 }; 
  
  
 export const getUserById = async(req:Request, res:Response):Promise<Response>=>{ 
-    const userById=await getRepository(User).findOne(req.params.id); 
+    const userById=await getRepository(directus_user).findOne(req.params.id); 
     return res.status(200).send(userById); 
 };
  
@@ -20,7 +21,7 @@ export const getUserById = async(req:Request, res:Response):Promise<Response>=>{
  
 export const createUser = async (req: Request, res: Response):Promise<Response> => {  
     const { username, password,address,firstName,phoneNumber, lastName, email } = req.body; 
-    const user = new User(); 
+    const user = new directus_user(); 
     user.username = username; 
     user.password = password; 
     user.address=address 
@@ -34,7 +35,7 @@ export const createUser = async (req: Request, res: Response):Promise<Response> 
       return; 
     } 
     user.hashPassword(); 
-    const userRepository = getRepository(User); 
+    const userRepository = getRepository(directus_user); 
     try { 
       await userRepository.save(user); 
     } catch (e) { 
@@ -53,7 +54,7 @@ export const createUser = async (req: Request, res: Response):Promise<Response> 
   //Get values from the body  
   const { username, password,address,firstName,phoneNumber, lastName, email } = req.body; 
   //Try to find user on database 
-  const userRepository = getRepository(User); 
+  const userRepository = getRepository(directus_user); 
   let user; 
   try { 
     user = await userRepository.findOneOrFail(id); 
@@ -88,6 +89,6 @@ export const createUser = async (req: Request, res: Response):Promise<Response> 
   }; 
 // Delete User by Id 
   export const deleteUser = async (req: Request, res: Response): Promise<Response> => { 
-    const results = await getRepository(User).delete(req.params.id); 
+    const results = await getRepository(directus_user).delete(req.params.id); 
     return res.status(200).send(results); 
   };  
