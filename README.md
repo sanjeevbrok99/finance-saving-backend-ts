@@ -1,4 +1,4 @@
-# Awesome Project Build with TypeORM
+# MoneySaving Finance api-v2  Building with Node-Express-TypeScript-TypeORM
 
 Steps to run this project:
 
