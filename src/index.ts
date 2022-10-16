@@ -22,7 +22,7 @@ export const logger = winston.createLogger({
         winston.format.printf(
           (info) => `${info.timestamp} ${info.level}: ${info.message}`,
         ),
-        //  winston.format.simple(),
+          winston.format.simple(),
       ),
     }),
   ],
