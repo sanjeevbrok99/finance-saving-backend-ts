@@ -12,3 +12,5 @@ Steps to run this project:
 6. We are using Typeorm as we are using TypeScript so Typeorm is best suited for TypeScript Project,Typeorm follows same path as popular ORM like Hibernate,Entity Framework.
 7. usefull resources :
                         `https://stackoverflow.com/search?q=directus`
+                        `https://orkhan.gitbook.io/typeorm/docs/data-source-options`
+                        `https://medium.com/directus`
