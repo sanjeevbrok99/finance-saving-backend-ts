@@ -14,3 +14,6 @@ Steps to run this project:
                         `https://stackoverflow.com/search?q=directus`
                         `https://orkhan.gitbook.io/typeorm/docs/data-source-options`
                         `https://medium.com/directus`
+8.TypeOrm with Express :
+                        `https://orkhan.gitbook.io/typeorm/docs/example-with-express`
+                        
