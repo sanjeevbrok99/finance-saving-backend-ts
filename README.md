@@ -4,7 +4,7 @@
 Steps to run this project: 
  
 1. Run `npm i` command  
-2. Setup database settings inside `ormconfig.json` file  
+2. Setup database settings inside `ormconfig.json` ,    ` "ssl": true, ` file  
 3. Run `npm run dev` command 
 "# maya-finance-api-v2" 
 4. In this project we are handeling our database through Directus cms ...So pls go through directus docs and understand how directus works
@@ -16,4 +16,4 @@ Steps to run this project:
                         `https://medium.com/directus`
 8.TypeOrm with Express :
                         `https://orkhan.gitbook.io/typeorm/docs/example-with-express`
-                        
+                        `https://github.com/terracefi/typeorm`
