@@ -2,7 +2,7 @@ import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColu
 import * as bcrypt from "bcryptjs";
 @Entity( "directus_user") 
 @Unique(['username'])
-export class directus_user {
+export class directus_users {
 
     @PrimaryGeneratedColumn({ type: "int", name: "id" }) 
     id: number; 

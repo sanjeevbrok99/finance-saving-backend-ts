@@ -1,12 +1,12 @@
 { 
    "type": "mysql", 
-   "host": "us-east.connect.psdb.cloud", 
+   "host": "localhost", 
    "port": 3306,      
-   "username": "88nwlp6qgicz1zpbbvni",               
-   "password": "pscale_pw_64uhKnqynDjfPjqqe9PeKhyfVxCyYREhGBc0nzD8MmL", 
+   "username": "root",               
+   "password": "RagnarLothBrok@1999", 
    "database": "moneysaving", 
    "synchronize": true, 
-   "logging": false,
+   "logging": false, 
    "entities": [             
       "src/entity/**/*.ts" 
    ], 

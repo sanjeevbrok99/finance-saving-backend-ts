@@ -1,19 +1,19 @@
 import { validate } from 'class-validator'; 
-import { directus_user } from '../entity/directus_users';  
+import { directus_users } from '../entity/directus_users';  
 import { getRepository } from 'typeorm'; 
 import {Request, Response } from 'express'; 
 const bcrypt = require('bcryptjs'); //use to hash passwords  
  
  
 export const getUsers = async(req:Request, res:Response):Promise<Response>=>{  
-    const users=await getRepository(directus_user).find(); 
+    const users=await getRepository(directus_users).find(); 
     
     return res.status(200).send(users); 
 }; 
  
  
 export const getUserById = async(req:Request, res:Response):Promise<Response>=>{ 
-    const userById=await getRepository(directus_user).findOne(req.params.id); 
+    const userById=await getRepository(directus_users).findOne(req.params.id); 
     return res.status(200).send(userById); 
 };
  
@@ -21,7 +21,7 @@ export const getUserById = async(req:Request, res:Response):Promise<Response>=>{
  
 export const createUser = async (req: Request, res: Response):Promise<Response> => {  
     const { username, password,address,firstName,phoneNumber, lastName, email } = req.body; 
-    const user = new directus_user(); 
+    const user = new directus_users(); 
     user.username = username; 
     user.password = password; 
     user.address=address 
@@ -35,7 +35,7 @@ export const createUser = async (req: Request, res: Response):Promise<Response> 
       return; 
     } 
     user.hashPassword(); 
-    const userRepository = getRepository(directus_user); 
+    const userRepository = getRepository(directus_users); 
     try { 
       await userRepository.save(user); 
     } catch (e) { 
@@ -54,7 +54,7 @@ export const createUser = async (req: Request, res: Response):Promise<Response> 
   //Get values from the body  
   const { username, password,address,firstName,phoneNumber, lastName, email } = req.body; 
   //Try to find user on database 
-  const userRepository = getRepository(directus_user); 
+  const userRepository = getRepository(directus_users); 
   let user; 
   try { 
     user = await userRepository.findOneOrFail(id); 
@@ -89,6 +89,6 @@ export const createUser = async (req: Request, res: Response):Promise<Response> 
   }; 
 // Delete User by Id 
   export const deleteUser = async (req: Request, res: Response): Promise<Response> => { 
-    const results = await getRepository(directus_user).delete(req.params.id); 
+    const results = await getRepository(directus_users).delete(req.params.id); 
     return res.status(200).send(results); 
   };  
